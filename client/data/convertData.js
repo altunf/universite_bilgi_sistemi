@@ -93,4 +93,4 @@ function extractBursInfo(lisansProgrami) {
 }
 
 // Dönüştürülmüş ve birleştirilmiş veriler
-const genelFormatData = mergeAndConvertData(data);
+//const genelFormatData = mergeAndConvertData(data);
