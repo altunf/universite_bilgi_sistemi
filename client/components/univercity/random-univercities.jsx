@@ -14,7 +14,6 @@ import {
 
 import { Table } from "@/components/ui/table";
 
-import { UnivercityHeader } from "./univercity-header";
 import { UnivercityList } from "./univercity-list";
 
 export const RandomUnivercities = () => {
@@ -35,10 +34,7 @@ export const RandomUnivercities = () => {
         </Button>
       </CardHeader>
       <CardContent>
-        <Table>
-          <UnivercityHeader />
-          <UnivercityList random={true} />
-        </Table>
+        <UnivercityList random={true} />
       </CardContent>
     </Card>
   );

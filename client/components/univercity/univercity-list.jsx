@@ -1,9 +1,9 @@
 "use client";
 import React from "react";
-import { TableBody } from "../ui/table";
 import { useUnivercityContext } from "@/context/univercity-context";
-import { UniversityRow } from "./univercity-row";
 import { getRandomElements } from "@/helpers/getRandomElement";
+import { UnivercityDataTable } from "./data-table";
+import { columns } from "./columns";
 
 export const UnivercityList = ({ random = false }) => {
   const { mergedData } = useUnivercityContext();
@@ -12,13 +12,5 @@ export const UnivercityList = ({ random = false }) => {
   const randomFiveItem = getRandomElements(randomItems);
   const displayedDate = random ? randomFiveItem : mergedData;
 
-  console.log(displayedDate, "data");
-
-  return (
-    <TableBody>
-      {displayedDate?.map((el, index) => (
-        <UniversityRow key={index} university={el} />
-      ))}
-    </TableBody>
-  );
+  return <UnivercityDataTable data={displayedDate} columns={columns} />;
 };
