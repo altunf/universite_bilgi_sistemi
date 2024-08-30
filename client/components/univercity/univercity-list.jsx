@@ -12,6 +12,8 @@ export const UnivercityList = ({ random = false }) => {
   const randomFiveItem = getRandomElements(randomItems);
   const displayedDate = random ? randomFiveItem : mergedData;
 
+  console.log(displayedDate, "data");
+
   return (
     <TableBody>
       {displayedDate?.map((el, index) => (

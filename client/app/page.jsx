@@ -1,5 +1,5 @@
 import { InfoCardList } from "@/components/info-card-list";
-import { TableOfAcedemics } from "@/components/academics/table-of-academics";
+import { TableOfAcedemics } from "@/components/academic/table-of-academics";
 import { RandomUnivercities } from "@/components/univercity/random-univercities";
 
 export default function Home() {
