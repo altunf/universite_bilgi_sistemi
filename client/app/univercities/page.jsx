@@ -1,8 +1,4 @@
-"use client";
-import Image from "next/image";
-import { ListFilter, MoreHorizontal } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
-
+import { ListFilter } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -16,26 +12,17 @@ import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
   DropdownMenuContent,
-  DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
-import { data } from "@/data/data";
-import { mergeAndConvertData } from "@/data/convertData";
+import { Table } from "@/components/ui/table";
+
+import { UnivercityHeader } from "@/components/univercity/univercity-header";
+import { UnivercityList } from "@/components/univercity/univercity-list";
 
 export default function Univercities() {
-  const convertedData = mergeAndConvertData(data);
-  console.log(convertedData[0]);
   return (
     <div className="flex h-full w-full flex-col bg-muted/40">
       <div className="flex flex-col sm:gap-4 sm:py-4 sm:pl-14">
@@ -75,85 +62,9 @@ export default function Univercities() {
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
-                  {" "}
                   <Table>
-                    <TableHeader>
-                      <TableRow>
-                        <TableHead className="hidden w-[100px] sm:table-cell">
-                          <span className="sr-only">Image</span>
-                        </TableHead>
-                        <TableHead>Üniversite Adı</TableHead>
-                        <TableHead>Akreditasyon</TableHead>
-                        <TableHead className="hidden md:table-cell">
-                          Eğitim Dili
-                        </TableHead>
-                        <TableHead className="hidden md:table-cell">
-                          Öğr. Gör. Sayısı
-                        </TableHead>
-                        <TableHead className="hidden md:table-cell">
-                          YKS Sıralaması
-                        </TableHead>
-                        <TableHead>
-                          <span className="sr-only">Actions</span>
-                        </TableHead>
-                      </TableRow>
-                    </TableHeader>
-                    <TableBody>
-                      {" "}
-                      {convertedData?.map((el, index) => {
-                        return (
-                          <TableRow key={index}>
-                            <TableCell className="hidden sm:table-cell">
-                              <Image
-                                alt="Product image"
-                                className="aspect-square rounded-md object-cover"
-                                height="64"
-                                src="/placeholder.svg"
-                                width="64"
-                              />
-                            </TableCell>
-                            <TableCell className="font-medium">
-                              {el["Üniversite"]}
-                            </TableCell>
-                            <TableCell>
-                              <Badge variant="outline">
-                                {el["Akreditasyon"]}
-                              </Badge>
-                            </TableCell>
-                            <TableCell className="hidden md:table-cell">
-                              {el["Lisans Programı"].ingilizce
-                                ? "İngilizce"
-                                : "Türkçe"}
-                            </TableCell>
-                            <TableCell className="hidden md:table-cell">
-                              {el["Akademik Personel"].length}
-                            </TableCell>
-                            <TableCell className="hidden md:table-cell">
-                              {el["YKS"][0].sıra}
-                            </TableCell>
-                            <TableCell>
-                              <DropdownMenu>
-                                <DropdownMenuTrigger asChild>
-                                  <Button
-                                    aria-haspopup="true"
-                                    size="icon"
-                                    variant="ghost"
-                                  >
-                                    <MoreHorizontal className="h-4 w-4" />
-                                    <span className="sr-only">Toggle menu</span>
-                                  </Button>
-                                </DropdownMenuTrigger>
-                                <DropdownMenuContent align="end">
-                                  <DropdownMenuLabel>Actions</DropdownMenuLabel>
-                                  <DropdownMenuItem>Edit</DropdownMenuItem>
-                                  <DropdownMenuItem>Delete</DropdownMenuItem>
-                                </DropdownMenuContent>
-                              </DropdownMenu>
-                            </TableCell>
-                          </TableRow>
-                        );
-                      })}
-                    </TableBody>
+                    <UnivercityHeader />
+                    <UnivercityList random={false} />
                   </Table>
                 </CardContent>
                 <CardFooter>

@@ -1,9 +1,8 @@
+"use client";
 import React from "react";
 import Link from "next/link";
 import { CircleUser, Menu, Package2, School, Search } from "lucide-react";
-
 import { Button } from "@/components/ui/button";
-
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -42,19 +41,19 @@ export const Header = () => {
           href="#"
           className="text-muted-foreground transition-colors hover:text-foreground"
         >
-          Products
+          Akademisyenler
         </Link>
         <Link
           href="#"
           className="text-muted-foreground transition-colors hover:text-foreground"
         >
-          Customers
+          Hakkımızda
         </Link>
         <Link
           href="#"
           className="text-muted-foreground transition-colors hover:text-foreground"
         >
-          Analytics
+          İletişim
         </Link>
       </nav>
       <Sheet>

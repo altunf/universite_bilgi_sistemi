@@ -1,9 +1,18 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
+import { data } from "@/data/data";
+import { mergeAndConvertData } from "@/data/convertData";
 
 const UnivercityContext = createContext({});
 
 export const UnivercityContextProvider = ({ children }) => {
-  const values = {};
+  const [mergedData, setMergedData] = useState([]);
+
+  useEffect(() => {
+    const convertedData = mergeAndConvertData(data);
+
+    setMergedData(convertedData);
+  }, []);
+  const values = { mergedData };
   return (
     <UnivercityContext.Provider value={values}>
       {children}
