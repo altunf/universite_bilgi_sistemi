@@ -1,5 +1,6 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
+import UnivercityProvider from "@/providers/univercity-provider";
 import { Header } from "@/components/Header";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -13,10 +14,12 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <header className="flex min-h-screen w-full flex-col p-4">
-          <Header />
-          {children}
-        </header>
+        <UnivercityProvider>
+          <header className="flex min-h-screen w-full flex-col p-4">
+            <Header />
+            {children}
+          </header>
+        </UnivercityProvider>
       </body>
     </html>
   );

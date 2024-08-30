@@ -33,10 +33,10 @@ export const Header = () => {
           Anasayfa
         </Link>
         <Link
-          href="#"
+          href="/univercities"
           className="text-muted-foreground transition-colors hover:text-foreground"
         >
-          Orders
+          Üniversiteler
         </Link>
         <Link
           href="#"
