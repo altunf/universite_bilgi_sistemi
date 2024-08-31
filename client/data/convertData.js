@@ -5,79 +5,79 @@ export function mergeAndConvertData(data) {
     const uniName = item["Üniversite"];
     if (!universityMap.has(uniName)) {
       universityMap.set(uniName, {
-        Üniversite: uniName,
-        "Lisans Programı": {
-          psikolojiDepartmanı: item["Lisans Programı"] ? "var" : "yok",
-          ingilizce:
+        univercity: uniName,
+        undergraduate: {
+          psychologyDepartment: item["Lisans Programı"] ? "var" : "yok",
+          english:
             item["Lisans Programı"] &&
             typeof item["Lisans Programı"] === "string"
               ? item["Lisans Programı"]
                   .toLocaleLowerCase("tr")
                   .includes("ingilizce")
               : false,
-          burs: extractBursInfo(item["Lisans Programı"]),
+          scholarship: extractBursInfo(item["Lisans Programı"]),
         },
-        Akreditasyon: item["Akreditasyon"],
-        YKS: [],
-        KPSS: {
-          "KPSS 1": item["KPSS 1"],
-          "KPSS 2": item["KPSS 2"],
+        accreditation: item["Akreditasyon"],
+        yks: [],
+        kpss: {
+          kpss1: item["KPSS 1"],
+          kpss2: item["KPSS 2"],
         },
-        "Akademik Personel": [],
+        academicStaff: [],
       });
     }
 
     const university = universityMap.get(uniName);
 
     // YKS verisini birleştiriyoruz
-    const ykSira = item["2022 YKS Sıra"];
-    if (ykSira && !university["YKS"].some((yks) => yks["sıra"] === ykSira)) {
-      university["YKS"].push({
+    const yksSira = item["2022 YKS Sıra"];
+    if (yksSira && !university.yks.some((yks) => yks["sıra"] === yksSira)) {
+      university.yks.push({
         yıl: "2022",
-        sıra: ykSira,
+        sıra: yksSira,
       });
     }
 
     // Akademik Personel verisini ekliyoruz
-    university["Akademik Personel"].push({
-      "Ad-Soyad": item["Ad-Soyad"],
-      Ünvan: item["Ünvan"],
-      Lisans: {
-        Üniversite: item["Lisans Üniversite"],
-        Bölüm: item["Lisans Bölüm"],
+    university.academicStaff.push({
+      fullName: item["Ad-Soyad"],
+      title: item["Ünvan"],
+      undergraduate: {
+        univercity: item["Lisans Üniversite"],
+        department: item["Lisans Bölüm"],
       },
-      "Yüksek Lisans": {
-        Üniversite: item["Yüksek Lisans Üniversite"],
-        Bölüm: item["Yüksek Lisans Bölüm"],
+      master: {
+        univercity: item["Yüksek Lisans Üniversite"],
+        department: item["Yüksek Lisans Bölüm"],
       },
-      Doktora: {
-        Üniversite: item["Doktora Üniversite"],
-        Bölüm: item["Doktora Bölüm"],
-        "Mezuniyet Yılı": item["Doktora/Tıpta Mezuniyet Yılı"],
+      phd: {
+        univercity: item["Doktora Üniversite"],
+        department: item["Doktora Bölüm"],
+        graduationYear: item["Doktora/Tıpta Mezuniyet Yılı"],
       },
-      "Post-Doktora": item["Post-Doktora"] || "-",
-      "Alt Alan": item["Alt Alan"],
-      "Anahtar Kelimeler": item["Anahtar Kelimeler"],
-      Projeler: {
-        Uluslararası: item["Uluslararası Proje"],
-        Tübitak: item["Tübitak Proje"],
-        BAP: item["BAP Proje"],
-        Diğer: item["Diğer Proje"],
+      postDoc: item["Post-Doktora"] || "-",
+      subField: item["Alt Alan"],
+      keyWords: item["Anahtar Kelimeler"],
+      projects: {
+        international: item["Uluslararası Proje"],
+        tubitak: item["Tübitak Proje"],
+        bap: item["BAP Proje"],
+        other: item["Diğer Proje"],
       },
-      Scopus: {
-        "Makale Sayısı": item["Scopus Makale Sayısı"],
-        "Atıf Sayısı": item["Scopus Atıf Sayısı"],
-        "h-index": item["Scopus h-index"],
-        Link: item["Scopus Link"],
+      scopus: {
+        article: item["Scopus Makale Sayısı"],
+        cite: item["Scopus Atıf Sayısı"],
+        hIndex: item["Scopus h-index"],
+        link: item["Scopus Link"],
       },
-      "Düzeltilmiş h-index": item["Düzeltilmiş h-index"],
-      "Düzeltilmiş makale sayısı": item["Düzeltilmiş makale sayısı"],
-      "Tıpta Uzmanlık Alanı": item["Tıpta Uzmanlık Alanı"] || "-",
-      "Mezun Öğrenci Sayısı": {
-        "YL (YOKSIS)": item["YL Mezun Öğrenci Sayısı (YOKSIS)"] || "0",
-        "DR (YOKSIS)": item["DR Mezun Öğrenci Sayısı (YOKSIS)"] || "0",
-        "YL (TEZYOK)": item["YL Mezun Öğrenci Sayısı (TEZYOK)"] || "0",
-        "DR (TEZYOK)": item["DR Mezun Öğrenci Sayısı (TEZYOK)"] || "0",
+      adjustedHIindex: item["Düzeltilmiş h-index"],
+      adjustedArticleCount: item["Düzeltilmiş makale sayısı"],
+      medicalSpecialty: item["Tıpta Uzmanlık Alanı"] || "-",
+      graduateStudentcount: {
+        yoksisYl: item["YL Mezun Öğrenci Sayısı (YOKSIS)"] || "0",
+        yoksisDr: item["DR Mezun Öğrenci Sayısı (YOKSIS)"] || "0",
+        tezyokYl: item["YL Mezun Öğrenci Sayısı (TEZYOK)"] || "0",
+        tezyokDr: item["DR Mezun Öğrenci Sayısı (TEZYOK)"] || "0",
       },
     });
   });

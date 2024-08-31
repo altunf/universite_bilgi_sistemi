@@ -61,9 +61,9 @@ export function UnivercityDataTable({ data, columns }) {
       <div className="flex items-center py-4">
         <Input
           placeholder="üniversite ara ..."
-          value={table.getColumn("Üniversite")?.getFilterValue() ?? ""}
+          value={table.getColumn("univercity")?.getFilterValue() ?? ""}
           onChange={(event) =>
-            table.getColumn("Üniversite")?.setFilterValue(event.target.value)
+            table.getColumn("univercity")?.setFilterValue(event.target.value)
           }
           className="max-w-sm"
         />

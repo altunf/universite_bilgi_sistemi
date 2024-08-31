@@ -1,4 +1,3 @@
-"use client";
 import * as React from "react";
 import {
   flexRender,
@@ -8,7 +7,7 @@ import {
   getSortedRowModel,
   useReactTable,
 } from "@tanstack/react-table";
-import { ArrowUpDown, ChevronDown, MoreHorizontal } from "lucide-react";
+import { ArrowUpDown, ChevronDown } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 
@@ -16,9 +15,6 @@ import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
   DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Input } from "@/components/ui/input";
@@ -31,78 +27,12 @@ import {
   TableRow,
 } from "@/components/ui/table";
 
-import { useUnivercityContext } from "@/context/univercity-context";
-
-export const columns = [
-  {
-    accessorKey: "Üniversite",
-    header: "Üniversite",
-  },
-  {
-    accessorKey: "Akademik Personel",
-    header: "Öğr. Gör. Sayısı",
-    cell: ({ row }) => row.getValue("Akademik Personel").length,
-  },
-
-  {
-    accessorKey: "Lisans Programı.burs",
-    header: "Burs Durumu",
-    cell: ({ row }) => row.original["Lisans Programı"]?.burs || "Veri Yok",
-  },
-  {
-    accessorKey: "Lisans Programı.ingilizce",
-    header: "İngilizce",
-    cell: ({ row }) =>
-      row.original["Lisans Programı"]?.ingilizce ? "İngilizce" : "Türkçe",
-  },
-  {
-    accessorKey: "Lisans Programı.psikolojiDepartmanı",
-    header: "Psikoloji Departmanı",
-    cell: ({ row }) =>
-      row.original["Lisans Programı"]?.psikolojiDepartmanı || "Veri Yok",
-  },
-  {
-    accessorKey: "Akreditasyon",
-    header: "Akreditasyon",
-  },
-  {
-    accessorKey: "YKS",
-    header: "YKS",
-    cell: ({ row }) => {
-      const yks = row.original["YKS"]; // Diziye erişim için doğru anahtar kullanımı
-      if (yks && yks.length > 0) {
-        return `${yks[0].sıra}`;
-      } else {
-        return "Veri Yok";
-      }
-    },
-  },
-  {
-    accessorKey: "KPSS.KPSS 1",
-    header: "KPSS 1",
-    cell: ({ row }) => row.original["KPSS"]?.["KPSS 1"] || "Veri Yok",
-  },
-  {
-    accessorKey: "KPSS.KPSS 2",
-    header: "KPSS 2",
-    cell: ({ row }) => row.original["KPSS"]?.["KPSS 2"] || "Veri Yok",
-  },
-];
-
-export function AcademicsDataTable() {
-  // Tablonun durum yönetimi için gerekli olan state değişkenleri
+export function AcademicsDataTable({ data, columns }) {
   const [sorting, setSorting] = React.useState([]);
   const [columnFilters, setColumnFilters] = React.useState([]);
   const [columnVisibility, setColumnVisibility] = React.useState({});
   const [rowSelection, setRowSelection] = React.useState({});
 
-  const { mergedData } = useUnivercityContext();
-
-  console.log(mergedData[0], "mergeddata");
-
-  const data = mergedData;
-
-  // Tablo yapılandırması ve modellerin oluşturulması
   const table = useReactTable({
     data,
     columns,
@@ -128,14 +58,16 @@ export function AcademicsDataTable() {
   return (
     <div className="w-full">
       <div className="flex items-center py-4">
-        <Input
-          placeholder="Üniversiteleri filtrele..."
-          value={table.getColumn("Üniversite")?.getFilterValue() ?? ""}
-          onChange={(event) =>
-            table.getColumn("Üniversite")?.setFilterValue(event.target.value)
-          }
-          className="max-w-sm"
-        />
+        {
+          <Input
+            placeholder="Akademisyen ara ..."
+            value={table.getColumn("fullName")?.getFilterValue() ?? ""}
+            onChange={(event) =>
+              table.getColumn("fullName")?.setFilterValue(event.target.value)
+            }
+            className="max-w-sm"
+          />
+        }
 
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
@@ -160,7 +92,7 @@ export function AcademicsDataTable() {
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
-      {/* Tablo bileşeni */}
+
       <div className="rounded-md border">
         <Table>
           <TableHeader>
@@ -209,12 +141,8 @@ export function AcademicsDataTable() {
           </TableBody>
         </Table>
       </div>
-      {/* Sayfalama ve seçim bilgileri */}
+
       <div className="flex items-center justify-end space-x-2 py-4">
-        <div className="flex-1 text-sm text-muted-foreground">
-          {table.getFilteredSelectedRowModel().rows.length} of{" "}
-          {table.getFilteredRowModel().rows.length} row(s) selected.
-        </div>
         <div className="space-x-2">
           <Button
             variant="outline"

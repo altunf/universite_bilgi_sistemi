@@ -1,16 +1,25 @@
 "use client";
 import React from "react";
-import { useUnivercityContext } from "@/context/univercity-context";
-import { getRandomElements } from "@/helpers/getRandomElement";
 import { AcademicsDataTable } from "./data-table";
-import { columns } from "./columns";
+import { columns } from "@/components/academic/columns";
+import { useUnivercityContext } from "@/context/univercity-context";
 
-export const AcademicsList = ({ random = false }) => {
+export const AcademicsList = () => {
   const { mergedData } = useUnivercityContext();
 
-  let randomItems = JSON.parse(JSON.stringify(mergedData));
-  const randomFiveItem = getRandomElements(randomItems);
-  const displayedData = random ? randomFiveItem : mergedData;
+  const randomItems = JSON.parse(JSON.stringify(mergedData));
 
-  return <AcademicsDataTable data={displayedData} columns={columns} />;
+  let academicsData = [];
+
+  randomItems?.forEach((personel) => {
+    const academicStaff = personel.academicStaff;
+    const updatedStaff = academicStaff.map((staff) => ({
+      ...staff,
+      univercity: personel.univercity,
+    }));
+
+    academicsData.push(...updatedStaff);
+  });
+
+  return <AcademicsDataTable data={academicsData} columns={columns} />;
 };

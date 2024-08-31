@@ -1,40 +1,40 @@
 export const columns = [
   {
-    accessorKey: "Üniversite",
+    accessorKey: "univercity",
     header: "Üniversite",
   },
   {
-    accessorKey: "Akademik Personel",
+    accessorKey: "academicStaff",
     header: "Öğr. Gör. Sayısı",
-    cell: ({ row }) => row.getValue("Akademik Personel").length,
+    cell: ({ row }) => row.getValue("academicStaff").length,
   },
 
   {
-    accessorKey: "Lisans Programı.burs",
+    accessorKey: "undergraduate.scholarship",
     header: "Burs Durumu",
-    cell: ({ row }) => row.original["Lisans Programı"]?.burs || "Veri Yok",
+    cell: ({ row }) => row.original.undergraduate?.scholarship || "Veri Yok",
   },
   {
-    accessorKey: "Lisans Programı.ingilizce",
+    accessorKey: "undergraduate.english",
     header: "İngilizce",
     cell: ({ row }) =>
-      row.original["Lisans Programı"]?.ingilizce ? "İngilizce" : "Türkçe",
+      row.original.undergraduate?.english ? "İngilizce" : "Türkçe",
   },
   {
-    accessorKey: "Lisans Programı.psikolojiDepartmanı",
+    accessorKey: "undergraduate.psychologyDepartment",
     header: "Psikoloji Departmanı",
     cell: ({ row }) =>
-      row.original["Lisans Programı"]?.psikolojiDepartmanı || "Veri Yok",
+      row.original.undergraduate?.psychologyDepartment || "Veri Yok",
   },
   {
-    accessorKey: "Akreditasyon",
+    accessorKey: "accreditation",
     header: "Akreditasyon",
   },
   {
-    accessorKey: "YKS",
+    accessorKey: "yks",
     header: "YKS",
     cell: ({ row }) => {
-      const yks = row.original["YKS"];
+      const yks = row.original.yks;
       if (yks && yks.length > 0) {
         return `${yks[0].sıra}`;
       } else {
@@ -43,13 +43,13 @@ export const columns = [
     },
   },
   {
-    accessorKey: "KPSS.KPSS 1",
+    accessorKey: "kpss.kpss1",
     header: "KPSS 1",
-    cell: ({ row }) => row.original["KPSS"]?.["KPSS 1"] || "Veri Yok",
+    cell: ({ row }) => row.original.kpss.kpss1 || "Veri Yok",
   },
   {
-    accessorKey: "KPSS.KPSS 2",
+    accessorKey: "kpss.kpss2",
     header: "KPSS 2",
-    cell: ({ row }) => row.original["KPSS"]?.["KPSS 2"] || "Veri Yok",
+    cell: ({ row }) => row.original.kpss.kpss2 || "Veri Yok",
   },
 ];

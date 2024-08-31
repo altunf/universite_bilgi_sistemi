@@ -45,14 +45,14 @@ export const RandomAcademics = () => {
             >
               <div className="grid gap-1">
                 <p className="text-sm font-medium leading-none">
-                  {academic["Akademik Personel"][0]["Ad-Soyad"]}
+                  {academic.academicStaff[0].fullName}
                 </p>
                 <CardDescription className="text-sm text-muted-foreground flex justify-start   ">
-                  {academic["Üniversite"]}
+                  {academic.univercity}
                 </CardDescription>
               </div>
               <CardDescription className=" flex justify-end   font-medium">
-                {academic["Akademik Personel"][0]["Alt Alan"]}
+                {academic.academicStaff[0].subField}
               </CardDescription>
             </div>
           );
