@@ -1,6 +1,6 @@
 import { InfoCardList } from "@/components/info-card-list";
-import { TableOfAcedemics } from "@/components/academic/table-of-academics";
 import { RandomUnivercities } from "@/components/univercity/random-univercities";
+import { RandomAcademics } from "@/components/academic/random-academics";
 
 export default function Home() {
   return (
@@ -8,7 +8,7 @@ export default function Home() {
       <InfoCardList />
       <div className="grid gap-4 md:gap-8 lg:grid-cols-2 xl:grid-cols-3">
         <RandomUnivercities />
-        <TableOfAcedemics />
+        <RandomAcademics />
       </div>
     </main>
   );

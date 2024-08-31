@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { data } from "@/data/data";
 import { mergeAndConvertData } from "@/data/convertData";
+import universities from "@/data/universities";
 
 const UnivercityContext = createContext({});
 
@@ -9,6 +10,20 @@ export const UnivercityContextProvider = ({ children }) => {
 
   useEffect(() => {
     const convertedData = mergeAndConvertData(data);
+    let a = [];
+    const academicsList =
+      convertedData?.map((personel, index) => {
+        const academicStaff = personel["Akademik Personel"];
+        const updatedStaff = academicStaff.map((staff) => ({
+          ...staff,
+          univercity: personel["Üniversite"], // Yeni eklemek istediğiniz alan ve değeri
+        }));
+
+        a.push(updatedStaff);
+      }) || [];
+    console.log(convertedData);
+
+    console.log(a.flat(1), "adsd");
 
     setMergedData(convertedData);
   }, []);

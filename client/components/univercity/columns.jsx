@@ -34,7 +34,7 @@ export const columns = [
     accessorKey: "YKS",
     header: "YKS",
     cell: ({ row }) => {
-      const yks = row.original["YKS"]; // Diziye erişim için doğru anahtar kullanımı
+      const yks = row.original["YKS"];
       if (yks && yks.length > 0) {
         return `${yks[0].sıra}`;
       } else {

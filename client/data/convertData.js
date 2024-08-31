@@ -11,7 +11,9 @@ export function mergeAndConvertData(data) {
           ingilizce:
             item["Lisans Programı"] &&
             typeof item["Lisans Programı"] === "string"
-              ? item["Lisans Programı"].toLowerCase().includes("ingilizce")
+              ? item["Lisans Programı"]
+                  .toLocaleLowerCase("tr")
+                  .includes("ingilizce")
               : false,
           burs: extractBursInfo(item["Lisans Programı"]),
         },

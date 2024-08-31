@@ -8,7 +8,7 @@ import {
   getSortedRowModel,
   useReactTable,
 } from "@tanstack/react-table";
-import { ArrowUpDown, ChevronDown, MoreHorizontal } from "lucide-react";
+import { ArrowUpDown, ChevronDown } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 
@@ -16,9 +16,6 @@ import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
   DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Input } from "@/components/ui/input";
@@ -32,13 +29,11 @@ import {
 } from "@/components/ui/table";
 
 export function UnivercityDataTable({ data, columns }) {
-  // Tablonun durum yönetimi için gerekli olan state değişkenleri
   const [sorting, setSorting] = React.useState([]);
   const [columnFilters, setColumnFilters] = React.useState([]);
   const [columnVisibility, setColumnVisibility] = React.useState({});
   const [rowSelection, setRowSelection] = React.useState({});
 
-  // Tablo yapılandırması ve modellerin oluşturulması
   const table = useReactTable({
     data,
     columns,
@@ -65,7 +60,7 @@ export function UnivercityDataTable({ data, columns }) {
     <div className="w-full">
       <div className="flex items-center py-4">
         <Input
-          placeholder="Üniversiteleri filtrele..."
+          placeholder="üniversite ara ..."
           value={table.getColumn("Üniversite")?.getFilterValue() ?? ""}
           onChange={(event) =>
             table.getColumn("Üniversite")?.setFilterValue(event.target.value)
@@ -96,7 +91,7 @@ export function UnivercityDataTable({ data, columns }) {
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
-      {/* Tablo bileşeni */}
+
       <div className="rounded-md border">
         <Table>
           <TableHeader>
@@ -147,10 +142,6 @@ export function UnivercityDataTable({ data, columns }) {
       </div>
       {/* Sayfalama ve seçim bilgileri */}
       <div className="flex items-center justify-end space-x-2 py-4">
-        <div className="flex-1 text-sm text-muted-foreground">
-          {table.getFilteredSelectedRowModel().rows.length} of{" "}
-          {table.getFilteredRowModel().rows.length} row(s) selected.
-        </div>
         <div className="space-x-2">
           <Button
             variant="outline"

@@ -89,7 +89,7 @@ export const columns = [
   },
 ];
 
-export function DataTableDemo() {
+export function AcademicsDataTable() {
   // Tablonun durum yönetimi için gerekli olan state değişkenleri
   const [sorting, setSorting] = React.useState([]);
   const [columnFilters, setColumnFilters] = React.useState([]);

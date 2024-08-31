@@ -7,7 +7,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 
-import { UnivercityList } from "@/components/univercity/univercity-list";
+import { UnivercitiesList } from "@/components/univercity/univercities-list";
 
 export default function Univercities() {
   return (
@@ -20,7 +20,7 @@ export default function Univercities() {
               <CardDescription>145 üniversite listeleniyor ...</CardDescription>
             </CardHeader>
             <CardContent>
-              <UnivercityList random={false} />
+              <UnivercitiesList random={false} />
             </CardContent>
             {/* <CardFooter>
                   <div className="text-xs text-muted-foreground">
