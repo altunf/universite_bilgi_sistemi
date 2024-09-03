@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { AcademicsDataTable } from "./data-table";
-import { columns } from "@/components/academic/columns";
+import { columnsShort } from "@/components/academic/columns";
 import { useUnivercityContext } from "@/context/univercity-context";
 
 export const AcademicsList = () => {
@@ -21,5 +21,6 @@ export const AcademicsList = () => {
     academicsData.push(...updatedStaff);
   });
 
-  return <AcademicsDataTable data={academicsData} columns={columns} />;
+  console.log(academicsData);
+  return <AcademicsDataTable data={academicsData} columns={columnsShort} />;
 };

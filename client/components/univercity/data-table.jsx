@@ -9,9 +9,7 @@ import {
   useReactTable,
 } from "@tanstack/react-table";
 import { ArrowUpDown, ChevronDown } from "lucide-react";
-
 import { Button } from "@/components/ui/button";
-
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -28,7 +26,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 
-export function UnivercityDataTable({ data, columns }) {
+export function UnivercityDataTable({ data, columns, random }) {
   const [sorting, setSorting] = React.useState([]);
   const [columnFilters, setColumnFilters] = React.useState([]);
   const [columnVisibility, setColumnVisibility] = React.useState({});
@@ -140,30 +138,31 @@ export function UnivercityDataTable({ data, columns }) {
           </TableBody>
         </Table>
       </div>
-      {/* Sayfalama ve seçim bilgileri */}
-      <div className="flex items-center justify-end space-x-2 py-4">
-        <div className="space-x-2">
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={() => table.previousPage()}
-            disabled={!table.getCanPreviousPage()}
-          >
-            Geri
-          </Button>
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={() => table.nextPage()}
-            disabled={!table.getCanNextPage()}
-          >
-            İleri
-          </Button>
-        </div>{" "}
-        <div className="text-sm text-muted-foreground">
-          Sayfa {pageIndex} / {pageCount}
+      {!random && (
+        <div className="flex items-center justify-end space-x-2 py-4">
+          <div className="space-x-2">
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => table.previousPage()}
+              disabled={!table.getCanPreviousPage()}
+            >
+              Geri
+            </Button>
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => table.nextPage()}
+              disabled={!table.getCanNextPage()}
+            >
+              İleri
+            </Button>
+          </div>
+          <div className="text-sm text-muted-foreground">
+            Sayfa {pageIndex} / {pageCount}
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }

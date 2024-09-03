@@ -12,5 +12,11 @@ export const UnivercitiesList = ({ random = false }) => {
   const randomFiveItem = getRandomElements(randomItems);
   const displayedData = random ? randomFiveItem : mergedData;
 
-  return <UnivercityDataTable data={displayedData} columns={columns} />;
+  return (
+    <UnivercityDataTable
+      data={displayedData}
+      columns={columns}
+      random={random}
+    />
+  );
 };

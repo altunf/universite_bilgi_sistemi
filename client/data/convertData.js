@@ -43,7 +43,7 @@ export function mergeAndConvertData(data) {
       fullName: item["Ad-Soyad"],
       title: item["Ünvan"],
       undergraduate: {
-        univercity: item["Lisans Üniversite"],
+        univercity: item["Lisans Üniversite "],
         department: item["Lisans Bölüm"],
       },
       master: {

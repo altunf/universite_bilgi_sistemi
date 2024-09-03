@@ -1,4 +1,62 @@
-export const columns = [
+export const columnsShort = [
+  {
+    accessorKey: "fullName",
+    header: "Ad Soyad",
+  },
+  {
+    accessorKey: "univercity",
+    header: "Üniversite",
+  },
+
+  {
+    accessorKey: "title",
+    header: "Ünvan",
+  },
+
+  {
+    accessorKey: "subField",
+    header: "Alt Alan",
+  },
+  {
+    accessorKey: "keyWords",
+    header: "Anahtar Kelimeler",
+  },
+
+  {
+    accessorKey: "undergraduate.department",
+    header: "Lisans Bölüm",
+    cell: ({ row }) => row.original.undergraduate.department || "Veri Yok",
+  },
+  {
+    accessorKey: "undergraduate.univercity",
+    header: "Lisans Üniversite",
+    cell: ({ row }) => row.original.undergraduate.univercity || "Veri Yok",
+  },
+
+  {
+    accessorKey: "master.department",
+    header: "Yüksek Lisans Bölüm",
+    cell: ({ row }) => row.original.master.department || "Veri Yok",
+  },
+  {
+    accessorKey: "master.univercity",
+    header: "Yüksek Lisans Üniversite",
+    cell: ({ row }) => row.original.master.univercity || "Veri Yok",
+  },
+
+  {
+    accessorKey: "phd.department",
+    header: "Doktora Bölüm",
+    cell: ({ row }) => row.original.phd.department || "Veri Yok",
+  },
+  {
+    accessorKey: "phd.univercity",
+    header: "Doktora Üniversite",
+    cell: ({ row }) => row.original.phd.univercity || "Veri Yok",
+  },
+];
+
+export const columnsDetail = [
   {
     accessorKey: "fullName",
     header: "Ad Soyad",

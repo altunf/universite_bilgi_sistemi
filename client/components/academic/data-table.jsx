@@ -1,16 +1,7 @@
+"use client";
 import * as React from "react";
-import {
-  flexRender,
-  getCoreRowModel,
-  getFilteredRowModel,
-  getPaginationRowModel,
-  getSortedRowModel,
-  useReactTable,
-} from "@tanstack/react-table";
 import { ArrowUpDown, ChevronDown } from "lucide-react";
-
 import { Button } from "@/components/ui/button";
-
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -26,12 +17,32 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import {
+  flexRender,
+  getCoreRowModel,
+  getFilteredRowModel,
+  getPaginationRowModel,
+  getSortedRowModel,
+  useReactTable,
+  PaginationState,
+  ColumnDef,
+} from "@tanstack/react-table";
+import {
+  keepPreviousData,
+  QueryClient,
+  QueryClientProvider,
+  useQuery,
+} from "@tanstack/react-query";
 
 export function AcademicsDataTable({ data, columns }) {
   const [sorting, setSorting] = React.useState([]);
   const [columnFilters, setColumnFilters] = React.useState([]);
   const [columnVisibility, setColumnVisibility] = React.useState({});
   const [rowSelection, setRowSelection] = React.useState({});
+  const [pagination, setPagination] = React.useState({
+    pageIndex: 0,
+    pageSize: 6,
+  });
 
   const table = useReactTable({
     data,
@@ -49,7 +60,11 @@ export function AcademicsDataTable({ data, columns }) {
       columnFilters,
       columnVisibility,
       rowSelection,
+      pagination,
     },
+    onPaginationChange: setPagination,
+
+    // debugTable: true,
   });
 
   const pageIndex = table.getState().pagination.pageIndex + 1;
@@ -142,8 +157,50 @@ export function AcademicsDataTable({ data, columns }) {
         </Table>
       </div>
 
-      <div className="flex items-center justify-end space-x-2 py-4">
+      <div className="flex items-center justify-end space-x-6 py-4">
+        <span className="flex items-center gap-1">
+          Sayfaya git:
+          <input
+            type="number"
+            min="1"
+            max={table.getPageCount()}
+            defaultValue={table.getState().pagination.pageIndex + 1}
+            onChange={(e) => {
+              const page = e.target.value ? Number(e.target.value) - 1 : 0;
+              table.setPageIndex(page);
+            }}
+          />
+        </span>
+        Sayfa başı gösterim:
+        <select
+          value={table.getState().pagination.pageSize}
+          onChange={(e) => {
+            table.setPageSize(Number(e.target.value));
+          }}
+        >
+          {[7, 10, 20, 30, 40, 50].map((pageSize) => (
+            <option key={pageSize} value={pageSize}>
+              Show {pageSize}
+            </option>
+          ))}
+        </select>
+        <span className="flex items-center gap-1">
+          <div>Page</div>
+          <strong>
+            {table.getState().pagination.pageIndex + 1} of{" "}
+            {table.getPageCount().toLocaleString()}
+          </strong>
+        </span>
         <div className="space-x-2">
+          {" "}
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => table.firstPage()}
+            disabled={!table.getCanPreviousPage()}
+          >
+            {"<<"}
+          </Button>
           <Button
             variant="outline"
             size="sm"
@@ -159,11 +216,17 @@ export function AcademicsDataTable({ data, columns }) {
             disabled={!table.getCanNextPage()}
           >
             İleri
+          </Button>{" "}
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => table.lastPage()}
+            disabled={!table.getCanNextPage()}
+          >
+            {">>"}
           </Button>
         </div>{" "}
-        <div className="text-sm text-muted-foreground">
-          Sayfa {pageIndex} / {pageCount}
-        </div>
+        {/* {dataQuery.isFetching ? "Loading..." : null} */}
       </div>
     </div>
   );
