@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { AcademicsDataTable } from "./data-table";
+import { AcademicsDataTable } from "./academics-data-table";
 import { columnsShort } from "@/components/academic/columns";
 import { useUnivercityContext } from "@/context/univercity-context";
 

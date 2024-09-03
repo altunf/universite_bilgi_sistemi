@@ -2,13 +2,13 @@
 import * as React from "react";
 import { ArrowUpDown, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
   DropdownMenuContent,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Input } from "@/components/ui/input";
 import {
   Table,
   TableBody,
@@ -18,7 +18,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import {
-  flexRender,
+  flexRender, // flexRender'ı buradan import edin.
   getCoreRowModel,
   getFilteredRowModel,
   getPaginationRowModel,
@@ -28,11 +28,14 @@ import {
   ColumnDef,
 } from "@tanstack/react-table";
 import {
-  keepPreviousData,
-  QueryClient,
-  QueryClientProvider,
-  useQuery,
-} from "@tanstack/react-query";
+  Select,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "../ui/select";
+import { SelectContent } from "@radix-ui/react-select";
 
 export function AcademicsDataTable({ data, columns }) {
   const [sorting, setSorting] = React.useState([]);
@@ -66,9 +69,6 @@ export function AcademicsDataTable({ data, columns }) {
 
     // debugTable: true,
   });
-
-  const pageIndex = table.getState().pagination.pageIndex + 1;
-  const pageCount = table.getPageCount();
 
   return (
     <div className="w-full">
@@ -160,7 +160,7 @@ export function AcademicsDataTable({ data, columns }) {
       <div className="flex items-center justify-end space-x-6 py-4">
         <span className="flex items-center gap-1">
           Sayfaya git:
-          <input
+          <Input
             type="number"
             min="1"
             max={table.getPageCount()}
@@ -172,18 +172,23 @@ export function AcademicsDataTable({ data, columns }) {
           />
         </span>
         Sayfa başı gösterim:
-        <select
-          value={table.getState().pagination.pageSize}
-          onChange={(e) => {
-            table.setPageSize(Number(e.target.value));
+        <Select
+          defaultValue={table.getState().pagination.pageSize}
+          onValueChange={(value) => {
+            table.setPageSize(value);
           }}
         >
-          {[7, 10, 20, 30, 40, 50].map((pageSize) => (
-            <option key={pageSize} value={pageSize}>
-              Show {pageSize}
-            </option>
-          ))}
-        </select>
+          <SelectTrigger className="w-[180px]">
+            <SelectValue placeholder="Sayfa başı gösterim" />
+          </SelectTrigger>
+          <SelectContent>
+            {[7, 10, 20, 30, 40, 50].map((pageSize) => (
+              <SelectItem key={pageSize} value={pageSize}>
+                {pageSize}
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
         <span className="flex items-center gap-1">
           <div>Page</div>
           <strong>
@@ -225,8 +230,7 @@ export function AcademicsDataTable({ data, columns }) {
           >
             {">>"}
           </Button>
-        </div>{" "}
-        {/* {dataQuery.isFetching ? "Loading..." : null} */}
+        </div>
       </div>
     </div>
   );
