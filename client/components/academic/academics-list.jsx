@@ -1,8 +1,9 @@
 "use client";
 import React from "react";
-import { AcademicsDataTable } from "./academics-data-table";
+
 import { columnsShort } from "@/components/academic/columns";
 import { useUnivercityContext } from "@/context/univercity-context";
+import { DataTable } from "../data-table";
 
 export const AcademicsList = () => {
   const { mergedData } = useUnivercityContext();
@@ -22,5 +23,12 @@ export const AcademicsList = () => {
   });
 
   console.log(academicsData);
-  return <AcademicsDataTable data={academicsData} columns={columnsShort} />;
+  return (
+    <DataTable
+      data={academicsData}
+      columns={columnsShort}
+      perPage={6}
+      searchTerm={"fullName"}
+    />
+  );
 };

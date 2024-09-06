@@ -6,7 +6,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 
-import { UnivercitiesList } from "@/components/univercity/univercities-list";
+import { UnivercitiesList } from "@/components/univercity/univercity-list";
 
 export default function Univercities() {
   return (

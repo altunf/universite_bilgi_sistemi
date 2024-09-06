@@ -1,4 +1,5 @@
 "use client";
+import { useRouter } from "next/navigation";
 import * as React from "react";
 import {
   flexRender,
@@ -8,14 +9,6 @@ import {
   getSortedRowModel,
   useReactTable,
 } from "@tanstack/react-table";
-import { ArrowUpDown, ChevronDown } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuCheckboxItem,
-  DropdownMenuContent,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 import { Input } from "@/components/ui/input";
 import {
   Table,
@@ -25,12 +18,18 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { TablePagination } from "@/components/table-pagination";
+import { TableVisibility } from "@/components/table-visibility";
 
-export function UnivercityDataTable({ data, columns, random }) {
+export function DataTable({ data, columns, random, searchTerm, perPage = 10 }) {
   const [sorting, setSorting] = React.useState([]);
   const [columnFilters, setColumnFilters] = React.useState([]);
   const [columnVisibility, setColumnVisibility] = React.useState({});
   const [rowSelection, setRowSelection] = React.useState({});
+  const [pagination, setPagination] = React.useState({
+    pageIndex: 0,
+    pageSize: perPage,
+  });
 
   const table = useReactTable({
     data,
@@ -48,46 +47,31 @@ export function UnivercityDataTable({ data, columns, random }) {
       columnFilters,
       columnVisibility,
       rowSelection,
+      pagination,
     },
+    onPaginationChange: setPagination,
   });
 
-  const pageIndex = table.getState().pagination.pageIndex + 1;
-  const pageCount = table.getPageCount();
+  const placeholder =
+    searchTerm == "univercity" ? "Üniversite ara ..." : "Akademisyen ara ...";
+  const router = useRouter();
+  const handleClick = (item) => {
+    console.log(item.original, "handleclk");
+    router.push(`/academics/${item.id}`);
+  };
 
   return (
     <div className="w-full">
       <div className="flex items-center py-4">
         <Input
-          placeholder="üniversite ara ..."
-          value={table.getColumn("univercity")?.getFilterValue() ?? ""}
+          placeholder={placeholder}
+          value={table.getColumn(searchTerm)?.getFilterValue() ?? ""}
           onChange={(event) =>
-            table.getColumn("univercity")?.setFilterValue(event.target.value)
+            table.getColumn(searchTerm)?.setFilterValue(event.target.value)
           }
           className="max-w-sm"
         />
-
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="outline" className="ml-auto">
-              Görünüm <ChevronDown className="ml-2 h-4 w-4" />
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
-            {table
-              .getAllColumns()
-              .filter((column) => column.getCanHide())
-              .map((column) => (
-                <DropdownMenuCheckboxItem
-                  key={column.id}
-                  className="capitalize"
-                  checked={column.getIsVisible()}
-                  onCheckedChange={(value) => column.toggleVisibility(!!value)}
-                >
-                  {column.id}
-                </DropdownMenuCheckboxItem>
-              ))}
-          </DropdownMenuContent>
-        </DropdownMenu>
+        <TableVisibility table={table} />
       </div>
 
       <div className="rounded-md border">
@@ -112,6 +96,10 @@ export function UnivercityDataTable({ data, columns, random }) {
             {table.getRowModel().rows?.length ? (
               table.getRowModel().rows.map((row) => (
                 <TableRow
+                  onClick={() => {
+                    handleClick(row);
+                  }}
+                  className="cursor-pointer"
                   key={row.id}
                   data-state={row.getIsSelected() && "selected"}
                 >
@@ -138,31 +126,7 @@ export function UnivercityDataTable({ data, columns, random }) {
           </TableBody>
         </Table>
       </div>
-      {!random && (
-        <div className="flex items-center justify-end space-x-2 py-4">
-          <div className="space-x-2">
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={() => table.previousPage()}
-              disabled={!table.getCanPreviousPage()}
-            >
-              Geri
-            </Button>
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={() => table.nextPage()}
-              disabled={!table.getCanNextPage()}
-            >
-              İleri
-            </Button>
-          </div>
-          <div className="text-sm text-muted-foreground">
-            Sayfa {pageIndex} / {pageCount}
-          </div>
-        </div>
-      )}
+      {!random && <TablePagination table={table} />}
     </div>
   );
 }

@@ -7,14 +7,16 @@ import {
   SelectValue,
   SelectItem,
   SelectContent,
-} from "../ui/select";
+  SelectGroup,
+} from "./ui/select";
 
 export function TablePagination({ table }) {
   return (
-    <div className="flex items-center justify-end space-x-6 py-4">
-      <span className="flex items-center gap-1">
+    <div className="flex  items-center justify-end space-x-6 py-4 gap-4">
+      <span className="flex items-center gap-2">
         Sayfaya git:
         <Input
+          className="w-16 h-[36px]"
           type="number"
           min="1"
           max={table.getPageCount()}
@@ -25,22 +27,26 @@ export function TablePagination({ table }) {
           }}
         />
       </span>
-      Sayfa başı gösterim:
-      <Select
-        defaultValue={table.getState().pagination.pageSize}
-        onValueChange={(value) => table.setPageSize(Number(value))}
-      >
-        <SelectTrigger className="w-[180px]">
-          <SelectValue placeholder="Sayfa başı gösterim" />
-        </SelectTrigger>
-        <SelectContent>
-          {[7, 10, 20, 30, 40, 50].map((pageSize) => (
-            <SelectItem key={pageSize} value={pageSize}>
-              {pageSize}
-            </SelectItem>
-          ))}
-        </SelectContent>
-      </Select>
+      <div className="flex items-center gap-2">
+        Sayfa başı gösterim:
+        <Select
+          defaultValue={table.getState().pagination.pageSize}
+          onValueChange={(value) => table.setPageSize(Number(value))}
+        >
+          <SelectTrigger className="w-[80px] h-[36px]">
+            <SelectValue placeholder="Sayfa başı gösterim" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectGroup>
+              {[7, 10, 20, 30, 40, 50].map((pageSize) => (
+                <SelectItem key={pageSize} value={pageSize}>
+                  {pageSize}
+                </SelectItem>
+              ))}
+            </SelectGroup>
+          </SelectContent>
+        </Select>
+      </div>
       <span className="flex items-center gap-1">
         <div>Sayfa</div>
         <strong>

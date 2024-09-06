@@ -12,7 +12,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 
-import { UnivercitiesList } from "./univercities-list";
+import { UnivercitiesList } from "./univercity-list";
 
 export const RandomUnivercities = () => {
   return (

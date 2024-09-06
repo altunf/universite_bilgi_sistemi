@@ -2,8 +2,9 @@
 import React from "react";
 import { useUnivercityContext } from "@/context/univercity-context";
 import { getRandomElements } from "@/helpers/getRandomElement";
-import { UnivercityDataTable } from "./data-table";
+
 import { columns } from "./columns";
+import { DataTable } from "../data-table";
 
 export const UnivercitiesList = ({ random = false }) => {
   const { mergedData } = useUnivercityContext();
@@ -13,10 +14,12 @@ export const UnivercitiesList = ({ random = false }) => {
   const displayedData = random ? randomFiveItem : mergedData;
 
   return (
-    <UnivercityDataTable
+    <DataTable
       data={displayedData}
       columns={columns}
       random={random}
+      perPage={10}
+      searchTerm={"univercity"}
     />
   );
 };
