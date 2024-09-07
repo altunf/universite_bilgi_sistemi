@@ -55,9 +55,13 @@ export function DataTable({ data, columns, random, searchTerm, perPage = 10 }) {
   const placeholder =
     searchTerm == "univercity" ? "Üniversite ara ..." : "Akademisyen ara ...";
   const router = useRouter();
+
   const handleClick = (item) => {
     console.log(item.original, "handleclk");
-    router.push(`/academics/${item.id}`);
+
+    searchTerm === "univercity"
+      ? router.push(`/univercities/${item.id}`)
+      : router.push(`/academics/${item.id}`);
   };
 
   return (
