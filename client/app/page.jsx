@@ -1,5 +1,5 @@
 import { InfoCardList } from "@/components/info-card-list";
-import { RandomUnivercities } from "@/components/univercity/random-univercities";
+import { RandomUniversities } from "@/components/university/random-universities";
 import { RandomAcademics } from "@/components/academic/random-academics";
 
 export default function Home() {
@@ -7,7 +7,7 @@ export default function Home() {
     <main className="flex flex-1  gap-4 md:gap-8 md:p-8 h-full w-full flex-col p-4">
       <InfoCardList />
       <div className="grid gap-4 md:gap-8 lg:grid-cols-2 xl:grid-cols-3">
-        <RandomUnivercities />
+        <RandomUniversities />
         <RandomAcademics />
       </div>
     </main>

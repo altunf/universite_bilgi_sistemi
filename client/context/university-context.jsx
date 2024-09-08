@@ -2,9 +2,9 @@ import React, { createContext, useContext, useEffect, useState } from "react";
 import { data } from "@/data/data";
 import { mergeAndConvertData } from "@/data/convertData";
 
-const UnivercityContext = createContext({});
+const UniversityContext = createContext({});
 
-export const UnivercityContextProvider = ({ children }) => {
+export const UniversityContextProvider = ({ children }) => {
   const [mergedData, setMergedData] = useState([]);
   const [detailData, setDetailData] = useState([]);
   const [academics, setAcademics] = useState([]);
@@ -21,7 +21,7 @@ export const UnivercityContextProvider = ({ children }) => {
       const academicStaff = personel.academicStaff;
       const updatedStaff = academicStaff.map((staff) => ({
         ...staff,
-        univercity: personel.univercity,
+        university: personel.university,
       }));
 
       academicsData.push(...updatedStaff);
@@ -32,10 +32,10 @@ export const UnivercityContextProvider = ({ children }) => {
 
   const values = { mergedData, detailData, setDetailData, academics };
   return (
-    <UnivercityContext.Provider value={values}>
+    <UniversityContext.Provider value={values}>
       {children}
-    </UnivercityContext.Provider>
+    </UniversityContext.Provider>
   );
 };
 
-export const useUnivercityContext = () => useContext(UnivercityContext);
+export const useUniversityContext = () => useContext(UniversityContext);

@@ -53,14 +53,14 @@ export function DataTable({ data, columns, random, searchTerm, perPage = 10 }) {
   });
 
   const placeholder =
-    searchTerm == "univercity" ? "Üniversite ara ..." : "Akademisyen ara ...";
+    searchTerm == "university" ? "Üniversite ara ..." : "Akademisyen ara ...";
   const router = useRouter();
 
   const handleClick = (item) => {
     console.log(item.original, "handleclk");
 
-    searchTerm === "univercity"
-      ? router.push(`/univercities/${item.id}`)
+    searchTerm === "university"
+      ? router.push(`/universities/${item.id}`)
       : router.push(`/academics/${item.id}`);
   };
 

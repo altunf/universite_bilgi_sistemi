@@ -5,7 +5,7 @@ export function mergeAndConvertData(data) {
     const uniName = item["Üniversite"];
     if (!universityMap.has(uniName)) {
       universityMap.set(uniName, {
-        univercity: uniName,
+        university: uniName,
         undergraduate: {
           psychologyDepartment: item["Lisans Programı"] ? "var" : "yok",
           english:
@@ -43,15 +43,15 @@ export function mergeAndConvertData(data) {
       fullName: item["Ad-Soyad"],
       title: item["Ünvan"],
       undergraduate: {
-        univercity: item["Lisans Üniversite "],
+        university: item["Lisans Üniversite "],
         department: item["Lisans Bölüm"],
       },
       master: {
-        univercity: item["Yüksek Lisans Üniversite"],
+        university: item["Yüksek Lisans Üniversite"],
         department: item["Yüksek Lisans Bölüm"],
       },
       phd: {
-        univercity: item["Doktora Üniversite"],
+        university: item["Doktora Üniversite"],
         department: item["Doktora Bölüm"],
         graduationYear: item["Doktora/Tıpta Mezuniyet Yılı"],
       },

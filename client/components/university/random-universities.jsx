@@ -12,9 +12,9 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 
-import { UnivercitiesList } from "./univercity-list";
+import { UniversitiesList } from "./university-list";
 
-export const RandomUnivercities = () => {
+export const RandomUniversities = () => {
   return (
     <Card className="xl:col-span-2" x-chunk="dashboard-01-chunk-4">
       <CardHeader className="flex flex-row items-center">
@@ -25,14 +25,14 @@ export const RandomUnivercities = () => {
           </CardDescription>
         </div>
         <Button asChild size="sm" className="ml-auto gap-1">
-          <Link href="/univercities">
+          <Link href="/universities">
             Tamamını Gör
             <ArrowUpRight className="h-4 w-4" />
           </Link>
         </Button>
       </CardHeader>
       <CardContent>
-        <UnivercitiesList random={true} />
+        <UniversitiesList random={true} />
       </CardContent>
     </Card>
   );

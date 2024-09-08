@@ -11,11 +11,11 @@ import {
 import { Button } from "../ui/button";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
-import { useUnivercityContext } from "@/context/univercity-context";
+import { useUniversityContext } from "@/context/university-context";
 import { getRandomElements } from "@/helpers/getRandomElement";
 
 export const RandomAcademics = () => {
-  const { mergedData } = useUnivercityContext();
+  const { mergedData } = useUniversityContext();
 
   let randomItems = JSON.parse(JSON.stringify(mergedData));
   const randomAcademics = getRandomElements(randomItems, 6);
@@ -48,7 +48,7 @@ export const RandomAcademics = () => {
                   {academic.academicStaff[0].fullName}
                 </p>
                 <CardDescription className="text-sm text-muted-foreground flex justify-start   ">
-                  {academic.univercity}
+                  {academic.university}
                 </CardDescription>
               </div>
               <CardDescription className=" flex justify-end   font-medium">

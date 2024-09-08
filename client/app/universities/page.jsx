@@ -6,9 +6,9 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 
-import { UnivercitiesList } from "@/components/univercity/univercity-list";
+import { UniversitiesList } from "@/components/university/university-list";
 
-export default function Univercities() {
+export default function Universities() {
   return (
     <main className="flex flex-1 md:p-8 h-full w-full flex-col  gap-4 p-4 sm:px-6 sm:py-0 md:gap-8">
       <Card x-chunk="dashboard-06-chunk-0">
@@ -17,7 +17,7 @@ export default function Univercities() {
           <CardDescription>145 üniversite listeleniyor ...</CardDescription>
         </CardHeader>
         <CardContent>
-          <UnivercitiesList random={false} />
+          <UniversitiesList random={false} />
         </CardContent>
       </Card>
     </main>

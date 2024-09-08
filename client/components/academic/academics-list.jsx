@@ -2,11 +2,11 @@
 import React from "react";
 
 import { columnsShort } from "@/components/academic/columns";
-import { useUnivercityContext } from "@/context/univercity-context";
+import { useUniversityContext } from "@/context/university-context";
 import { DataTable } from "../data-table";
 
 export const AcademicsList = () => {
-  const { academics } = useUnivercityContext();
+  const { academics } = useUniversityContext();
 
   return (
     <DataTable

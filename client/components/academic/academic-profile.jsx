@@ -1,5 +1,5 @@
 "use client";
-import { useUnivercityContext } from "@/context/univercity-context";
+import { useUniversityContext } from "@/context/university-context";
 import { UserRoundSearch } from "lucide-react";
 
 import React from "react";
@@ -12,7 +12,7 @@ import {
 } from "../ui/card";
 
 export const AcademicProfile = ({ id }) => {
-  const { academics } = useUnivercityContext();
+  const { academics } = useUniversityContext();
   console.log(academics[id]);
 
   return (
@@ -23,7 +23,7 @@ export const AcademicProfile = ({ id }) => {
             {`${academics[id]?.title} ${academics[id]?.fullName}`}
           </CardTitle>
           <CardDescription className=" capitalize">
-            {academics[id]?.univercity}
+            {academics[id]?.university}
           </CardDescription>
         </CardHeader>
         <CardContent className="flex items-center gap-6">
@@ -38,17 +38,17 @@ export const AcademicProfile = ({ id }) => {
             <li>
               {" "}
               Lisans:{" "}
-              {`${academics[id]?.undergraduate?.univercity} - ${academics[id]?.undergraduate?.department}`}
+              {`${academics[id]?.undergraduate?.university} - ${academics[id]?.undergraduate?.department}`}
             </li>
             <li>
               {" "}
               Yüksek Lisans:{" "}
-              {`${academics[id]?.master?.univercity} - ${academics[id]?.master?.department}`}
+              {`${academics[id]?.master?.university} - ${academics[id]?.master?.department}`}
             </li>
             <li>
               {" "}
               Doktora:{" "}
-              {`${academics[id]?.phd?.univercity} - ${academics[id]?.phd?.department}`}
+              {`${academics[id]?.phd?.university} - ${academics[id]?.phd?.department}`}
             </li>
           </ol>
         </CardContent>

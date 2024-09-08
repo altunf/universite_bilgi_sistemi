@@ -25,7 +25,7 @@ export const Header = () => {
           Anasayfa
         </Link>
         <Link
-          href="/univercities"
+          href="/universities"
           className="text-muted-foreground transition-colors hover:text-foreground"
         >
           Üniversiteler

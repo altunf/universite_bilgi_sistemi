@@ -1,6 +1,6 @@
 export const columns = [
   {
-    accessorKey: "univercity",
+    accessorKey: "university",
     header: "Üniversite",
   },
   {

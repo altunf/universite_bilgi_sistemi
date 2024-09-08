@@ -4,7 +4,7 @@ export const columnsShort = [
     header: "Ad Soyad",
   },
   {
-    accessorKey: "univercity",
+    accessorKey: "university",
     header: "Üniversite",
   },
 
@@ -28,9 +28,9 @@ export const columnsShort = [
     cell: ({ row }) => row.original.undergraduate.department || "Veri Yok",
   },
   {
-    accessorKey: "undergraduate.univercity",
+    accessorKey: "undergraduate.university",
     header: "Lisans Üniversite",
-    cell: ({ row }) => row.original.undergraduate.univercity || "Veri Yok",
+    cell: ({ row }) => row.original.undergraduate.university || "Veri Yok",
   },
 
   {
@@ -39,9 +39,9 @@ export const columnsShort = [
     cell: ({ row }) => row.original.master.department || "Veri Yok",
   },
   {
-    accessorKey: "master.univercity",
+    accessorKey: "master.university",
     header: "Yüksek Lisans Üniversite",
-    cell: ({ row }) => row.original.master.univercity || "Veri Yok",
+    cell: ({ row }) => row.original.master.university || "Veri Yok",
   },
 
   {
@@ -50,9 +50,9 @@ export const columnsShort = [
     cell: ({ row }) => row.original.phd.department || "Veri Yok",
   },
   {
-    accessorKey: "phd.univercity",
+    accessorKey: "phd.university",
     header: "Doktora Üniversite",
-    cell: ({ row }) => row.original.phd.univercity || "Veri Yok",
+    cell: ({ row }) => row.original.phd.university || "Veri Yok",
   },
 ];
 
@@ -62,7 +62,7 @@ export const columnsDetail = [
     header: "Ad Soyad",
   },
   {
-    accessorKey: "univercity",
+    accessorKey: "university",
     header: "Üniversite",
   },
 
@@ -86,9 +86,9 @@ export const columnsDetail = [
     cell: ({ row }) => row.original.undergraduate.department || "Veri Yok",
   },
   {
-    accessorKey: "undergraduate.univercity",
+    accessorKey: "undergraduate.university",
     header: "Lisans Üniversite",
-    cell: ({ row }) => row.original.undergraduate.univercity || "Veri Yok",
+    cell: ({ row }) => row.original.undergraduate.university || "Veri Yok",
   },
 
   {
@@ -97,9 +97,9 @@ export const columnsDetail = [
     cell: ({ row }) => row.original.master.department || "Veri Yok",
   },
   {
-    accessorKey: "master.univercity",
+    accessorKey: "master.university",
     header: "Yüksek Lisans Üniversite",
-    cell: ({ row }) => row.original.master.univercity || "Veri Yok",
+    cell: ({ row }) => row.original.master.university || "Veri Yok",
   },
 
   {
@@ -108,9 +108,9 @@ export const columnsDetail = [
     cell: ({ row }) => row.original.phd.department || "Veri Yok",
   },
   {
-    accessorKey: "phd.univercity",
+    accessorKey: "phd.university",
     header: "Doktora Üniversite",
-    cell: ({ row }) => row.original.phd.univercity || "Veri Yok",
+    cell: ({ row }) => row.original.phd.university || "Veri Yok",
   },
   {
     accessorKey: "phd.graduationYear",
