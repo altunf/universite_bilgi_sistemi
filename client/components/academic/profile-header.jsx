@@ -2,7 +2,7 @@ import { UserRoundSearch } from "lucide-react";
 
 export const ProfileHeader = ({ academic }) => {
   return (
-    <header className="bg-primary text-primary-foreground flex items-center px-1 justify-start py-8 container mx-auto max-w-8xl md:px-6  gap-12">
+    <header className="bg-primary text-primary-foreground flex items-center px-1 justify-center py-8  max-w-8xl md:px-6  gap-12">
       <UserRoundSearch
         size={250}
         strokeWidth={0.4}

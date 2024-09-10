@@ -25,7 +25,8 @@ export const AcademicProfile = ({ id }) => {
               {showDetails ? "Kısaltılmış Görünüm" : "Detaylı Görünüm"}{" "}
               <Layers2 className="w-4  h-4 ml-4 " />
             </Button>
-          </div>
+          </div>{" "}
+          <h2 className="text-2xl font-semibold mb-4">Temel Bilgiler</h2>
           <div className="grid grid-cols-4 gap-6 mt-6">
             <ProfileCard
               title="Doktora Sonrası"
@@ -85,7 +86,12 @@ export const AcademicProfile = ({ id }) => {
             />
           </div>
         </section>
-        {showDetails && <ProfileDetail academic={academic} />}
+        <section>
+          {showDetails && (
+            <h2 className="text-2xl font-semibold mb-4">Detaylı Bilgiler</h2>
+          )}
+          {showDetails && <ProfileDetail academic={academic} />}
+        </section>
       </div>
     </div>
   );
