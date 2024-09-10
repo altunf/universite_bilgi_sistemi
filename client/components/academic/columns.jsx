@@ -61,6 +61,7 @@ export const columnsDetail = [
     accessorKey: "fullName",
     header: "Ad Soyad",
   },
+
   {
     accessorKey: "university",
     header: "Üniversite",
@@ -195,5 +196,49 @@ export const columnsDetail = [
     accessorKey: "graduateStudentcount.yoksisDr",
     header: "DR (YOKSIS)",
     cell: ({ row }) => row.original.graduateStudentcount.yoksisDr || "-",
+  },
+];
+
+export const educationInfo = [
+  {
+    accessorKey: "undergraduate.department",
+    header: "Lisans Bölüm",
+    cell: ({ row }) => row.original.undergraduate.department || "Veri Yok",
+  },
+  {
+    accessorKey: "undergraduate.university",
+    header: "Lisans Üniversite",
+    cell: ({ row }) => row.original.undergraduate.university || "Veri Yok",
+  },
+
+  {
+    accessorKey: "master.department",
+    header: "Yüksek Lisans Bölüm",
+    cell: ({ row }) => row.original.master.department || "Veri Yok",
+  },
+  {
+    accessorKey: "master.university",
+    header: "Yüksek Lisans Üniversite",
+    cell: ({ row }) => row.original.master.university || "Veri Yok",
+  },
+
+  {
+    accessorKey: "phd.department",
+    header: "Doktora Bölüm",
+    cell: ({ row }) => row.original.phd.department || "Veri Yok",
+  },
+  {
+    accessorKey: "phd.university",
+    header: "Doktora Üniversite",
+    cell: ({ row }) => row.original.phd.university || "Veri Yok",
+  },
+  {
+    accessorKey: "phd.graduationYear",
+    header: "Doktora Mezuniyet Yılı",
+    cell: ({ row }) => row.original.phd.graduationYear || "-",
+  },
+  {
+    accessorKey: "postDoc",
+    header: "Post Doktora",
   },
 ];

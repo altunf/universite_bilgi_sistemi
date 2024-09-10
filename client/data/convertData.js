@@ -70,10 +70,10 @@ export function mergeAndConvertData(data) {
         hIndex: item["Scopus h-index"],
         link: item["Scopus Link"],
       },
-      adjustedHIindex: item["Düzeltilmiş h-index"],
+      adjustedHIndex: item["Düzeltilmiş h-index"],
       adjustedArticleCount: item["Düzeltilmiş makale sayısı"],
       medicalSpecialty: item["Tıpta Uzmanlık Alanı"] || "-",
-      graduateStudentcount: {
+      graduateStudentCount: {
         yoksisYl: item["YL Mezun Öğrenci Sayısı (YOKSIS)"] || "0",
         yoksisDr: item["DR Mezun Öğrenci Sayısı (YOKSIS)"] || "0",
         tezyokYl: item["YL Mezun Öğrenci Sayısı (TEZYOK)"] || "0",
