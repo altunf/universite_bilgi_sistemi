@@ -78,7 +78,7 @@ export function DataTable({ data, columns, random, searchTerm, perPage = 10 }) {
         <TableVisibility table={table} />
       </div>
 
-      <div className="rounded-md border">
+      <div className="rounded-md border capitalize">
         <Table>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (

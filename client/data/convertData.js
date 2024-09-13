@@ -5,7 +5,7 @@ export function mergeAndConvertData(data) {
     const uniName = item["Üniversite"];
     if (!universityMap.has(uniName)) {
       universityMap.set(uniName, {
-        university: uniName,
+        university: uniName.toLocaleLowerCase("tr"),
         undergraduate: {
           psychologyDepartment: item["Lisans Programı"] ? "var" : "yok",
           english:

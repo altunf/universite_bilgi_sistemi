@@ -7,9 +7,9 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { ThemeButton } from "./theme-button";
 
-export const Header = () => {
+export const Navbar = () => {
   return (
-    <main className="sticky top-0 flex h-16 items-center gap-4 border-b bg-background px-4 md:px-6">
+    <main className="sticky top-0 flex h-16 items-center justify-between gap-4 border-b bg-background px-4 md:px-6">
       <nav className="hidden flex-col gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6">
         <Link
           href="/"
@@ -35,18 +35,6 @@ export const Header = () => {
           className="text-muted-foreground transition-colors hover:text-foreground"
         >
           Akademisyenler
-        </Link>
-        <Link
-          href="#"
-          className="text-muted-foreground transition-colors hover:text-foreground"
-        >
-          Hakkımızda
-        </Link>
-        <Link
-          href="#"
-          className="text-muted-foreground transition-colors hover:text-foreground"
-        >
-          İletişim
         </Link>
       </nav>
       <Sheet>
@@ -95,7 +83,7 @@ export const Header = () => {
           </nav>
         </SheetContent>
       </Sheet>
-      <div className="flex w-full items-center gap-4 md:ml-auto md:gap-2 lg:gap-4">
+      <div>
         <ThemeButton />
       </div>
     </main>

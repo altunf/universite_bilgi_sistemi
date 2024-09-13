@@ -18,7 +18,6 @@ const ProfileCard = ({ title, description, content, link }) => {
       </CardHeader>
       <CardContent>
         <div className="text-lg">
-          {/* İçeriği alt alta göstermek için */}
           {Array.isArray(content) ? (
             content.map((line, index) => (
               <CardDescription className="text-lg" key={index}>

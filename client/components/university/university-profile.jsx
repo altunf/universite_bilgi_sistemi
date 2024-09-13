@@ -168,7 +168,7 @@ export const UniversityProfile = ({ id }) => {
                 }}
               >
                 <CardHeader>
-                  <div className="flex items-center space-x-4">
+                  <div className="flex items-center justify-start+ ml-0 space-x-4">
                     <Avatar>
                       <AvatarImage
                         src={`/academicStaff.jpg?height=40&width=40`}
@@ -186,7 +186,8 @@ export const UniversityProfile = ({ id }) => {
                 </CardHeader>
                 <CardContent>
                   <p className="text-sm text-muted-foreground">
-                    <i>Anahtar kelimeler</i>: {staff.keyWords}
+                    <i className=" underline">Anahtar kelimeler</i>:{" "}
+                    {staff.keyWords}
                   </p>
                 </CardContent>
               </Card>
