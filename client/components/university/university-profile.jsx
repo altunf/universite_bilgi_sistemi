@@ -106,7 +106,7 @@ export const UniversityProfile = ({ id }) => {
                 </div>
               </CardContent>
             </Card>
-
+            {/* 
             <Card>
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                 <CardTitle className="text-sm font-medium">
@@ -128,7 +128,7 @@ export const UniversityProfile = ({ id }) => {
               <CardContent>
                 <div className="text-2xl font-bold">$100M+</div>
               </CardContent>
-            </Card>
+            </Card> */}
           </div>
         </section>
 
