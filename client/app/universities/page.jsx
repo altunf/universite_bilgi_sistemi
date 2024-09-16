@@ -17,7 +17,7 @@ export default function Universities() {
           <CardDescription>145 üniversite listeleniyor ...</CardDescription>
         </CardHeader>
         <CardContent>
-          <UniversitiesList random={false} />
+          <UniversitiesList />
         </CardContent>
       </Card>
     </main>

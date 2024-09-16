@@ -5,15 +5,15 @@ import { getRandomElements } from "@/helpers/getRandomElement";
 
 const UniversityContext = createContext({});
 
-export const UniversityContextProvider = ({ children }) => {
-  const convertedData = mergeAndConvertData(data);
-  const randomFiveItem = getRandomElements(convertedData);
+const initialData = getRandomElements(mergeAndConvertData(data));
 
-  const [mergedData, setMergedData] = useState(randomFiveItem);
+export const UniversityContextProvider = ({ children }) => {
+  const [mergedData, setMergedData] = useState([]);
   const [detailData, setDetailData] = useState([]);
   const [academics, setAcademics] = useState([]);
 
   useEffect(() => {
+    const convertedData = mergeAndConvertData(data);
     setMergedData(convertedData);
 
     let academicsData = [];

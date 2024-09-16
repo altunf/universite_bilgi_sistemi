@@ -1,9 +1,10 @@
 export function mergeAndConvertData(data) {
   const universityMap = new Map();
-
+  let count = 0;
   data.forEach((item) => {
     const uniName = item["Üniversite"];
     if (!universityMap.has(uniName)) {
+      count++;
       universityMap.set(uniName, {
         university: uniName.toLocaleLowerCase("tr"),
         undergraduate: {
@@ -24,6 +25,7 @@ export function mergeAndConvertData(data) {
           kpss2: item["KPSS 2"],
         },
         academicStaff: [],
+        id: count,
       });
     }
 
@@ -56,7 +58,7 @@ export function mergeAndConvertData(data) {
         graduationYear: item["Doktora/Tıpta Mezuniyet Yılı"],
       },
       postDoc: item["Post-Doktora"] || "-",
-      subField: item["Alt Alan"],
+      subField: item["Alt Alan"].toLocaleLowerCase("tr"),
       keyWords: item["Anahtar Kelimeler"],
       projects: {
         international: item["Uluslararası Proje"],
@@ -81,7 +83,7 @@ export function mergeAndConvertData(data) {
       },
     });
   });
-
+  console.log(Array.from(universityMap.values()));
   return Array.from(universityMap.values());
 }
 
@@ -93,6 +95,3 @@ function extractBursInfo(lisansProgrami) {
   }
   return "Yok";
 }
-
-// Dönüştürülmüş ve birleştirilmiş veriler
-//const genelFormatData = mergeAndConvertData(data);

@@ -17,7 +17,8 @@ import { Users, Book, Award, Globe, Banknote } from "lucide-react";
 export const UniversityProfile = ({ id }) => {
   const { mergedData, academics } = useUniversityContext();
   // const [showDetails, setShowDetails] = useState(false);
-  const university = mergedData[id];
+  const university = mergedData.find((x) => x.id == id);
+
   const router = useRouter();
 
   const handleClick = (name) => {

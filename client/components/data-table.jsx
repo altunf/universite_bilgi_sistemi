@@ -58,7 +58,7 @@ export function DataTable({ data, columns, random, searchTerm, perPage = 10 }) {
 
   const handleClick = (item) => {
     searchTerm === "university"
-      ? router.push(`/universities/${item.id}`)
+      ? router.push(`/universities/${item.original.id}`)
       : router.push(`/academics/${item.id}`);
   };
 
@@ -69,10 +69,26 @@ export function DataTable({ data, columns, random, searchTerm, perPage = 10 }) {
           placeholder={placeholder}
           value={table.getColumn(searchTerm)?.getFilterValue() ?? ""}
           onChange={(event) =>
-            table.getColumn(searchTerm)?.setFilterValue(event.target.value)
+            table
+              .getColumn(searchTerm)
+              ?.setFilterValue(event.target.value.toLocaleLowerCase("tr"))
           }
           className="max-w-sm"
         />
+        {searchTerm == "fullName" ? (
+          <Input
+            placeholder={"Alt alan ara ..."}
+            value={table.getColumn("subField")?.getFilterValue() ?? ""}
+            onChange={(event) =>
+              table
+                .getColumn("subField")
+                ?.setFilterValue(event.target.value.toLocaleLowerCase("tr"))
+            }
+            className="max-w-sm ml-4"
+          />
+        ) : (
+          ""
+        )}
         <TableVisibility table={table} />
       </div>
 
