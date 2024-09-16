@@ -44,7 +44,7 @@ export const InfoCardList = () => {
   const description = [
     "Psikoloji bölümü bulunan üniversiteler",
     "Psikoloji bölümlerinde yer alan akademisyenler",
-    "Psikoloji bölümünün eğitim dili İngilizce olan üniversiteler",
+    "Psikoloji bölümü eğitim dili İngilizce olan üniversiteler",
     "Psikoloji bölümü akredite olan üniversite sayısı",
   ];
 
