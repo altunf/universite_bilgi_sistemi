@@ -1,22 +1,34 @@
 "use client";
 import { InfoCard } from "./info-card";
-import React, { useEffect, useState } from "react";
-import { useUniversityContext } from "@/context/university-context";
+import React from "react";
+
+import { mergeAndConvertData } from "@/data/convertData";
+import { data } from "@/data/data";
 
 export const InfoCardList = () => {
-  const { mergedData, academics } = useUniversityContext();
-  const [englishCount, setEnglish] = useState();
-  const [accreditationCount, setAccreditation] = useState();
+  const convertedData = mergeAndConvertData(data);
 
-  useEffect(() => {
-    const english = mergedData.filter((el) => el.undergraduate.english == true);
-    setEnglish(english.length);
+  const academicStaffList = () => {
+    let academicsData = [];
+    convertedData?.forEach((personel) => {
+      const academicStaff = personel.academicStaff;
+      const updatedStaff = academicStaff.map((staff) => ({
+        ...staff,
+        university: personel.university,
+      }));
 
-    const accreditation = mergedData.filter(
-      (el) => el.accreditation !== "Hayır"
-    );
-    setAccreditation(accreditation.length);
-  }, [mergedData]);
+      academicsData.push(...updatedStaff);
+    });
+
+    return academicsData;
+  };
+
+  const english = convertedData.filter(
+    (el) => el.undergraduate.english == true
+  );
+  const accreditation = convertedData.filter(
+    (el) => el.accreditation !== "Hayır"
+  );
 
   const titles = [
     "Toplam Üniversite Sayısı",
@@ -25,10 +37,10 @@ export const InfoCardList = () => {
     "Akreditasyonu Olan Üniversite Sayısı",
   ];
   const values = [
-    mergedData.length,
-    academics.length,
-    englishCount,
-    accreditationCount,
+    convertedData.length,
+    academicStaffList().length,
+    english.length,
+    accreditation.length,
   ];
   const description = [
     "Psikoloji bölümü bulunan üniversiteler",

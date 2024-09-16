@@ -15,11 +15,10 @@ export const UniversityContextProvider = ({ children }) => {
 
   useEffect(() => {
     setMergedData(mergeAndConvertData(data));
-    const randomItems = JSON.parse(JSON.stringify(convertedData));
 
     let academicsData = [];
 
-    randomItems?.forEach((personel) => {
+    convertedData?.forEach((personel) => {
       const academicStaff = personel.academicStaff;
       const updatedStaff = academicStaff.map((staff) => ({
         ...staff,
