@@ -14,7 +14,7 @@ export const UniversityContextProvider = ({ children }) => {
   const [academics, setAcademics] = useState([]);
 
   useEffect(() => {
-    setMergedData(mergeAndConvertData(data));
+    setMergedData(convertedData);
 
     let academicsData = [];
 
