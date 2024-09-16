@@ -9,8 +9,7 @@ import { DataTable } from "../data-table";
 export const UniversitiesList = ({ random = false }) => {
   const { mergedData } = useUniversityContext();
 
-  let randomItems = JSON.parse(JSON.stringify(mergedData));
-  const randomFiveItem = getRandomElements(randomItems);
+  const randomFiveItem = getRandomElements(mergedData);
   const displayedData = random ? randomFiveItem : mergedData;
 
   return (

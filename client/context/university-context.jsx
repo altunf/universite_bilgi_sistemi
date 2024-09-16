@@ -1,18 +1,20 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { data } from "@/data/data";
 import { mergeAndConvertData } from "@/data/convertData";
+import { getRandomElements } from "@/helpers/getRandomElement";
 
 const UniversityContext = createContext({});
 
 export const UniversityContextProvider = ({ children }) => {
-  const [mergedData, setMergedData] = useState([]);
+  const convertedData = mergeAndConvertData(data);
+  const randomFiveItem = getRandomElements(convertedData);
+
+  const [mergedData, setMergedData] = useState(randomFiveItem);
   const [detailData, setDetailData] = useState([]);
   const [academics, setAcademics] = useState([]);
 
   useEffect(() => {
-    const convertedData = mergeAndConvertData(data);
-    setMergedData(convertedData);
-
+    setMergedData(mergeAndConvertData(data));
     const randomItems = JSON.parse(JSON.stringify(convertedData));
 
     let academicsData = [];

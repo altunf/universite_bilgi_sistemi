@@ -16,10 +16,9 @@ import { getRandomElements } from "@/helpers/getRandomElement";
 
 export const RandomAcademics = () => {
   const { mergedData } = useUniversityContext();
-  console.log(mergedData);
+
   const randomAcademics = getRandomElements(mergedData, 6);
 
-  console.log("sd");
   return (
     <Card x-chunk="dashboard-01-chunk-5">
       <CardHeader className="flex flex-row items-center ">
