@@ -46,7 +46,7 @@ export const RandomAcademics = () => {
                 <p className="text-sm font-medium leading-none">
                   {academic.academicStaff[0].fullName}
                 </p>
-                <CardDescription className="text-sm text-muted-foreground flex justify-start   ">
+                <CardDescription className="text-sm text-muted-foreground flex justify-start capitalize">
                   {academic.university}
                 </CardDescription>
               </div>
