@@ -2,10 +2,10 @@
 import ProfileCard from "./profile-card";
 
 const ProfileDetail = ({ academic }) => (
-  <section>
+  <section className="px-4 md:px-6">
     <div className="grid grid-cols-1 gap-6 mt-6">
       <section>
-        <div className="grid grid-cols-2 gap-6 mt-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
           <ProfileCard
             title="Projeler"
             content={[
@@ -25,7 +25,7 @@ const ProfileDetail = ({ academic }) => (
             ]}
           />
         </div>
-        <div className="grid grid-cols-4 gap-6 mt-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-6">
           <ProfileCard
             title="Düzeltilmiş Makale Sayısı"
             content={academic?.adjustedArticleCount}

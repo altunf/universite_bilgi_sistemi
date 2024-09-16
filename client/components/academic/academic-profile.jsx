@@ -17,17 +17,20 @@ export const AcademicProfile = ({ id }) => {
       <ProfileHeader academic={academic} />
       <div className="container mx-auto max-w-8xl py-12 px-4 md:px-6 flex flex-col gap-12">
         <section>
-          <div className="flex items-center justify-end">
+          <div className="flex items-center justify-end mb-4">
             <Button
               variant="default"
               onClick={() => setShowDetails(!showDetails)}
+              className="flex items-center gap-2"
             >
               {showDetails ? "Kısaltılmış Görünüm" : "Detaylı Görünüm"}{" "}
-              <Layers2 className="w-4  h-4 ml-4 " />
+              <Layers2 className="w-4 h-4" />
             </Button>
-          </div>{" "}
-          <h2 className="text-2xl font-semibold mb-4">Temel Bilgiler</h2>
-          <div className="grid grid-cols-4 gap-6 mt-6">
+          </div>
+          <h2 className="text-xl md:text-2xl font-semibold mb-4">
+            Temel Bilgiler
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mt-6">
             <ProfileCard
               title="Doktora Sonrası"
               description="(Post Doctorate)"
@@ -36,7 +39,7 @@ export const AcademicProfile = ({ id }) => {
             <ProfileCard
               title="Doktora"
               content={[
-                `${academic?.phd.department} `,
+                `${academic?.phd.department}`,
                 `${academic?.phd.university} - ${academic?.phd.graduationYear}`,
               ]}
             />
@@ -74,6 +77,7 @@ export const AcademicProfile = ({ id }) => {
                     href={academic?.scopus.link}
                     target="_blank"
                     rel="noopener noreferrer"
+                    className="flex items-center"
                   >
                     <Button>
                       Sayfaya Git <ExternalLink className="h-4 w-4 ml-2" />
@@ -86,12 +90,14 @@ export const AcademicProfile = ({ id }) => {
             />
           </div>
         </section>
-        <section>
-          {showDetails && (
-            <h2 className="text-2xl font-semibold mb-4">Detaylı Bilgiler</h2>
-          )}
-          {showDetails && <ProfileDetail academic={academic} />}
-        </section>
+        {showDetails && (
+          <section>
+            <h2 className="text-xl md:text-2xl font-semibold mb-4">
+              Detaylı Bilgiler
+            </h2>
+            <ProfileDetail academic={academic} />
+          </section>
+        )}
       </div>
     </div>
   );
