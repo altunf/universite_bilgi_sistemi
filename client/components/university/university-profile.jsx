@@ -29,7 +29,7 @@ export const UniversityProfile = ({ id }) => {
   };
   return (
     <div className="min-h-screen bg-background">
-      <header className="bg-primary text-primary-foreground py-16">
+      <header className="bg-primary text-primary-foreground py-16 capitalize">
         <div className="container mx-auto px-4">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-4">
             {university?.university}
@@ -164,7 +164,7 @@ export const UniversityProfile = ({ id }) => {
                 key={index}
                 className="cursor-pointer"
                 onClick={() => {
-                  handleClick(staff.fullName);
+                  handleClick(staff?.fullName);
                 }}
               >
                 <CardHeader>
@@ -172,22 +172,24 @@ export const UniversityProfile = ({ id }) => {
                     <Avatar>
                       <AvatarImage
                         src={`/academicStaff.jpg?height=40&width=40`}
-                        alt={staff.fullName}
+                        alt={staff?.fullName}
                       />
-                      <AvatarFallback>{staff.fullName.slice(0)}</AvatarFallback>
+                      <AvatarFallback>
+                        {staff?.fullName.slice(0)}
+                      </AvatarFallback>
                     </Avatar>
                     <div className="space-y-2">
                       <CardTitle>
-                        {staff.title} {staff.fullName}
+                        {staff?.title} {staff?.fullName}
                       </CardTitle>
-                      <CardDescription>{staff.subField}</CardDescription>
+                      <CardDescription>{staff?.subField}</CardDescription>
                     </div>
                   </div>
                 </CardHeader>
                 <CardContent>
                   <p className="text-sm text-muted-foreground">
                     <i className=" underline">Anahtar kelimeler</i>:{" "}
-                    {staff.keyWords}
+                    {staff?.keyWords}
                   </p>
                 </CardContent>
               </Card>
