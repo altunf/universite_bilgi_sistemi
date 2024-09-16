@@ -57,8 +57,6 @@ export function DataTable({ data, columns, random, searchTerm, perPage = 10 }) {
   const router = useRouter();
 
   const handleClick = (item) => {
-    console.log(item.original, "handleclk");
-
     searchTerm === "university"
       ? router.push(`/universities/${item.id}`)
       : router.push(`/academics/${item.id}`);

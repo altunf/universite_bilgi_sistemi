@@ -18,7 +18,6 @@ export const UniversityProfile = ({ id }) => {
   const { mergedData, academics } = useUniversityContext();
   // const [showDetails, setShowDetails] = useState(false);
   const university = mergedData[id];
-  console.log(university);
   const router = useRouter();
 
   const handleClick = (name) => {
