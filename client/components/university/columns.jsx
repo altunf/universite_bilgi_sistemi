@@ -16,7 +16,7 @@ export const columns = [
   },
   {
     accessorKey: "undergraduate.english",
-    header: "İngilizce",
+    header: "Eğitim Dili",
     cell: ({ row }) =>
       row.original.undergraduate?.english ? "İngilizce" : "Türkçe",
   },

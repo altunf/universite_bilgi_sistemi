@@ -1,4 +1,3 @@
-"use client";
 import { InfoCard } from "./info-card";
 import React from "react";
 
