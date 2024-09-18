@@ -30,7 +30,7 @@ export const RandomAcademics = () => {
         </div>
         <Button asChild size="sm" className="ml-auto gap-1">
           <Link href="/academics">
-            Tamamını Gör
+            Tümünü Gör
             <ArrowUpRight className="h-4 w-4" />
           </Link>
         </Button>

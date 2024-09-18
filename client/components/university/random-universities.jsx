@@ -26,7 +26,7 @@ export const RandomUniversities = () => {
         </div>
         <Button asChild size="sm" className="ml-auto gap-1">
           <Link href="/universities">
-            Tamamını Gör
+            Tümünü Gör
             <ArrowUpRight className="h-4 w-4" />
           </Link>
         </Button>
