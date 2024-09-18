@@ -76,16 +76,29 @@ export function DataTable({ data, columns, random, searchTerm, perPage = 10 }) {
           className="max-w-sm"
         />
         {searchTerm == "fullName" ? (
-          <Input
-            placeholder={"Alt alan ara ..."}
-            value={table.getColumn("subField")?.getFilterValue() ?? ""}
-            onChange={(event) =>
-              table
-                .getColumn("subField")
-                ?.setFilterValue(event.target.value.toLocaleLowerCase("tr"))
-            }
-            className="max-w-sm ml-4"
-          />
+          <>
+            {" "}
+            <Input
+              placeholder={"Alt alan ara ..."}
+              value={table.getColumn("subField")?.getFilterValue() ?? ""}
+              onChange={(event) =>
+                table
+                  .getColumn("subField")
+                  ?.setFilterValue(event.target.value.toLocaleLowerCase("tr"))
+              }
+              className="max-w-sm ml-4"
+            />{" "}
+            <Input
+              placeholder={"Anahtar kavram ara ..."}
+              value={table.getColumn("keyWords")?.getFilterValue() ?? ""}
+              onChange={(event) =>
+                table
+                  .getColumn("keyWords")
+                  ?.setFilterValue(event.target.value.toLocaleLowerCase("tr"))
+              }
+              className="max-w-sm ml-4"
+            />
+          </>
         ) : (
           ""
         )}
